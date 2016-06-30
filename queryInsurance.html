@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="康健无忧">
+  <title>康健无忧A款产品咨询表</title>
+  <!--<link href="http://cdn.bootcss.com/foundation/5.5.3/css/normalize.css" media="screen" rel="stylesheet">-->
+  <link href="http://cdn.bootcss.com/foundation/6.2.3/foundation.css" media="screen" rel="stylesheet">
+  <link href="http://cdn.bootcss.com/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" media="screen">
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+  <!--<script src="http://cdn.foundation5.zurb.com/foundation.js"></script>-->
+  <!--[if lte IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+< ![endif]-->
+  <style type="text/css">
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .weather {
+      border: 1px solid #eee;
+      box-shadow: 0 2px 0 rgba(204, 204, 204, 0.15);
+      margin-bottom: 1rem;
+      border-radius: 0.25rem;
+      background: white;
+      position: relative;
+    }
+
+    .weather .header {
+      background: #fc6e51;
+      height: 6.2rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 6.2rem;
+      padding: 0 1.25rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .weather .footer {
+      background: #aea79a;
+      height: 3rem;
+      color: #fff;
+      line-height: 3rem;
+      padding: 0 1.25rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .weather .header h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: bold;
+      -webkit-margin-before: 0.83em;
+      -webkit-margin-after: 0.83em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+    }
+
+    .weather ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .weather .day-group {
+      padding: 1.25rem 1.9rem;
+      border-bottom: 1px solid #f2f2f2;
+      color: #2d2d2d;
+    }
+
+    .weather .day {
+      padding: 1.25rem 1.9rem;
+      border-bottom: 1px solid #f2f2f2;
+      color: #888888;
+    }
+
+    .weather .day:last-child {
+      border-bottom: none;
+    }
+
+    .weather .day-group .day-title {
+      text-transform: uppercase;
+      color: #666666;
+      font-weight: 600;
+    }
+
+    .weather .day .day-icon {
+      margin-top: -0.7rem;
+      color: #666666;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+<header id="header" class="header"></header>
+
+<div class="row">
+  <div class="small-12 medium-6 small-centered columns">
+    <div class="weather">
+      <header class="header">
+        <h2>康健无忧A款费率</h2>
+      </header>
+      <article>
+        <ul>
+          <li class="day-group">
+            <span class="day-title">个人信息:</span>
+          </li>
+          <li class="day">
+            <span>性别</span>
+
+            <div class="day-icon">
+              <label for="gender"></label>
+              <select id="gender">
+                <option>男</option>
+                <option>女</option>
+              </select>
+            </div>
+          </li>
+          <li class="day">
+            <span>年龄（周岁）</span>
+
+            <div class="day-icon">
+              <input type="number" id="age" min="0" max="65" step="1" value="33">
+              <label for="age"></label>
+            </div>
+          </li>
+          <li class="day">
+            <span>保额（万元）</span>
+
+            <div class="day-icon">
+              <label for="insurance"></label>
+              <input type="number" id="insurance" min="1" max="10000" step="0.1" value="1">
+            </div>
+          </li>
+
+          <li class="day-group">
+            <span class="day-title">保费计算:</span>
+          </li>
+          <li class="day">
+            <table class="hover">
+              <thead style="text-align: center;">
+              <tr>
+                <th style="text-align: center;">交费期间</th>
+                <th style="text-align: center;">基本保险金额（元）</th>
+              </tr>
+              </thead>
+              <tbody style="text-align: center;">
+              <tr>
+                <td>一次性交清</td>
+                <td id='one'></td>
+              </tr>
+              <tr>
+                <td>3年</td>
+                <td id='three'></td>
+              </tr>
+              <tr>
+                <td>5年</td>
+                <td id='five'></td>
+              </tr>
+              <tr>
+                <td>10年</td>
+                <td id='ten'></td>
+              </tr>
+              <tr>
+                <td>15年</td>
+                <td id='fifteen'></td>
+              </tr>
+              <tr>
+                <td>20年</td>
+                <td id='twenty'></td>
+              </tr>
+              </tbody>
+            </table>
+            <div style="text-align: center;">
+              <input type="button" class="button" onclick="get_cost()" value="计算">
+            </div>
+          </li>
+
+          <li class="day-group">
+            <span class="day-title">保险利益:</span>
+          </li>
+          <li class="day">
+            <div>
+              重大疾病保险金：<span id="zdjb">1</span>（万元）<br/>
+              等待期：180天，涵盖81种重大疾病。<br/>
+              <br/>
+              轻症保险金：<span id="qz">0.2</span>（万元）<br/>
+              等待期：180天，涵盖41中轻症，最多赔付5次，且豁免剩余未交保费。<br/>
+              <br/>
+              身故保险金：<span id="sg">1</span>（万元）<br/>
+              若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
+              <br/>
+              全残保险金：<span id="qc">1</span>（万元）<br/>
+              若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
+              <br/>
+              本宣传材料仅供参考，具体以合同为准。<br/>
+            </div>
+          </li>
+        </ul>
+      </article>
+      <footer class="footer" id="footer"> Copyright © 2016 semal. All Rights Reserved.</footer>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'>
+  function get_value(cost, insurance) {
+    if (cost != '') {
+      var ins = parseInt(cost) * parseFloat(insurance);
+      return ins.toFixed(2);
+    } else {
+      return '不支持';
+    }
+  }
+  function get_cost() {
+    var male_cost_table = {
+      "0": ["1427", "472", "292", "172", "123", "102"],
+      "1": ["1465", "484", "300", "176", "127", "104"],
+      "10": ["1908", "631", "391", "229", "165", "136"],
+      "11": ["1967", "650", "403", "237", "170", "140"],
+      "12": ["2029", "670", "415", "244", "175", "145"],
+      "13": ["2092", "692", "428", "252", "181", "150"],
+      "14": ["2158", "713", "442", "260", "187", "154"],
+      "15": ["2226", "736", "456", "268", "193", "159"],
+      "16": ["2296", "759", "470", "277", "199", "165"],
+      "17": ["2368", "783", "485", "286", "205", "170"],
+      "18": ["2441", "807", "500", "294", "212", "175"],
+      "19": ["2514", "831", "516", "303", "218", "181"],
+      "2": ["1506", "498", "309", "181", "130", "107"],
+      "20": ["2589", "856", "531", "313", "225", "186"],
+      "21": ["2666", "882", "547", "322", "232", "192"],
+      "22": ["2745", "908", "563", "332", "239", "198"],
+      "23": ["2826", "935", "580", "342", "246", "204"],
+      "24": ["2910", "962", "597", "352", "253", "210"],
+      "25": ["2995", "991", "615", "362", "261", "217"],
+      "26": ["3084", "1020", "633", "373", "269", "224"],
+      "27": ["3175", "1050", "652", "384", "277", "231"],
+      "28": ["3268", "1081", "671", "396", "286", "238"],
+      "29": ["3364", "1113", "691", "408", "295", "246"],
+      "3": ["1550", "512", "317", "186", "134", "110"],
+      "30": ["3463", "1146", "711", "420", "304", "254"],
+      "31": ["3565", "1180", "732", "433", "313", "262"],
+      "32": ["3670", "1214", "754", "446", "323", "271"],
+      "33": ["3777", "1250", "776", "460", "334", "280"],
+      "34": ["3888", "1287", "800", "474", "345", "290"],
+      "35": ["4002", "1325", "823", "489", "356", "300"],
+      "36": ["4117", "1363", "848", "504", "368", "310"],
+      "37": ["4235", "1403", "872", "519", "380", "321"],
+      "38": ["4355", "1443", "898", "536", "392", "333"],
+      "39": ["4477", "1484", "924", "552", "405", "345"],
+      "4": ["1595", "527", "327", "192", "138", "114"],
+      "40": ["4602", "1526", "950", "569", "419", "357"],
+      "41": ["4728", "1568", "977", "587", "433", "370"],
+      "42": ["4857", "1611", "1005", "605", "447", "384"],
+      "43": ["4989", "1655", "1033", "624", "463", "398"],
+      "44": ["5123", "1701", "1063", "643", "479", "413"],
+      "45": ["5259", "1747", "1093", "664", "496", "429"],
+      "46": ["5394", "1793", "1122", "684", "513", ""],
+      "47": ["5532", "1839", "1153", "705", "530", ""],
+      "48": ["5670", "1886", "1184", "727", "549", ""],
+      "49": ["5809", "1934", "1216", "750", "569", ""],
+      "5": ["1642", "543", "336", "197", "142", "117"],
+      "50": ["5953", "1984", "1248", "773", "589", ""],
+      "51": ["6092", "2031", "1280", "796", "", ""],
+      "52": ["6232", "2079", "1312", "820", "", ""],
+      "53": ["6373", "2128", "1345", "846", "", ""],
+      "54": ["6516", "2178", "1379", "872", "", ""],
+
+      "55": ["6663", "2229", "1414", "900", "", ""],
+      "56": ["6805", "2279", "1448", "", "", ""],
+      "57": ["6947", "2328", "1483", "", "", ""],
+      "58": ["7088", "2378", "1520", "", "", ""],
+      "59": ["7229", "2431", "1557", "", "", ""],
+      "6": ["1691", "559", "346", "203", "146", "120"],
+      "60": ["7375", "2483", "1595", "", "", ""],
+      "61": ["7507", "2531", "1630", "", "", ""],
+      "62": ["7636", "2578", "1666", "", "", ""],
+      "63": ["7761", "2624", "1704", "", "", ""],
+      "64": ["7884", "2674", "1744", "", "", ""],
+      "65": ["8020", "2725", "1783", "", "", ""],
+      "7": ["1743", "576", "357", "210", "150", "124"],
+      "8": ["1796", "593", "368", "216", "155", "128"],
+      "9": ["1851", "612", "379", "223", "160", "132"]
+    };
+    var female_cost_table = {
+      "0": ["1352", "447", "277", "163", "117", "96"],
+      "1": ["1388", "459", "284", "167", "120", "99"],
+      "10": ["1807", "597", "370", "218", "156", "129"],
+      "11": ["1863", "616", "382", "224", "161", "133"],
+      "12": ["1921", "635", "393", "231", "166", "138"],
+      "13": ["1980", "654", "406", "239", "172", "142"],
+      "14": ["2041", "675", "418", "246", "177", "147"],
+      "15": ["2103", "695", "431", "254", "183", "151"],
+      "16": ["2168", "717", "444", "262", "188", "156"],
+      "17": ["2234", "739", "458", "270", "194", "161"],
+      "18": ["2302", "761", "472", "278", "201", "166"],
+      "19": ["2371", "784", "486", "287", "207", "172"],
+      "2": ["1426", "471", "292", "171", "123", "102"],
+      "20": ["2442", "808", "501", "295", "213", "177"],
+      "21": ["2514", "832", "516", "304", "220", "182"],
+      "22": ["2589", "856", "531", "313", "226", "188"],
+      "23": ["2665", "882", "547", "323", "233", "194"],
+      "24": ["2744", "908", "563", "333", "240", "200"],
+      "25": ["2825", "934", "580", "343", "248", "206"],
+      "26": ["2908", "962", "597", "353", "255", "213"],
+      "27": ["2993", "990", "615", "364", "263", "220"],
+      "28": ["3080", "1019", "633", "375", "271", "227"],
+      "29": ["3170", "1049", "652", "386", "280", "234"],
+      "3": ["1466", "485", "300", "176", "127", "105"],
+      "30": ["3261", "1079", "671", "397", "288", "241"],
+      "31": ["3355", "1111", "690", "409", "297", "249"],
+      "32": ["3451", "1143", "710", "421", "306", "257"],
+      "33": ["3549", "1175", "731", "434", "316", "265"],
+      "34": ["3649", "1208", "752", "447", "326", "274"],
+      "35": ["3751", "1242", "773", "460", "336", "282"],
+      "36": ["3855", "1277", "795", "474", "346", "292"],
+      "37": ["3961", "1312", "817", "488", "357", "301"],
+      "38": ["4068", "1348", "840", "502", "368", "311"],
+      "39": ["4176", "1384", "863", "517", "379", "321"],
+      "4": ["1509", "499", "309", "181", "130", "108"],
+      "40": ["4286", "1421", "886", "532", "390", "331"],
+      "41": ["4398", "1459", "910", "547", "402", "341"],
+      "42": ["4510", "1496", "934", "562", "414", "352"],
+      "43": ["4624", "1535", "959", "578", "426", "363"],
+      "44": ["4740", "1574", "984", "594", "439", "375"],
+      "45": ["4857", "1613", "1009", "610", "452", "386"],
+      "46": ["4973", "1653", "1034", "626", "464", ""],
+      "47": ["5093", "1693", "1060", "643", "478", ""],
+      "48": ["5217", "1734", "1086", "660", "492", ""],
+      "49": ["5342", "1776", "1113", "678", "507", ""],
+      "5": ["1554", "514", "318", "187", "134", "111"],
+      "50": ["5469", "1819", "1140", "697", "522", ""],
+      "51": ["5599", "1863", "1169", "716", "", ""],
+      "52": ["5733", "1909", "1199", "737", "", ""],
+      "53": ["5870", "1956", "1230", "758", "", ""],
+      "54": ["6007", "2003", "1260", "780", "", ""],
+      "55": ["6144", "2049", "1291", "802", "", ""],
+      "56": ["6281", "2096", "1322", "", "", ""],
+      "57": ["6422", "2144", "1354", "", "", ""],
+      "58": ["6564", "2193", "1388", "", "", ""],
+      "59": ["6709", "2245", "1423", "", "", ""],
+      "6": ["1601", "529", "328", "193", "138", "114"],
+      "60": ["6857", "2296", "1458", "", "", ""],
+      "61": ["6999", "2346", "1493", "", "", ""],
+      "62": ["7142", "2397", "1530", "", "", ""],
+      "63": ["7283", "2448", "1569", "", "", ""],
+      "64": ["7422", "2502", "1609", "", "", ""],
+      "65": ["7570", "2556", "1648", "", "", ""],
+      "7": ["1650", "545", "338", "198", "143", "118"],
+      "8": ["1701", "562", "348", "205", "147", "122"],
+      "9": ["1753", "579", "359", "211", "152", "125"]
+    };
+    var gender = document.getElementById('gender');
+    var specific_gender = gender.value;
+    var specific_age = document.getElementById('age').value;
+    var specific_insurance = document.getElementById('insurance').value;
+    var one = document.getElementById('one');
+    var three = document.getElementById('three');
+    var five = document.getElementById('five');
+    var ten = document.getElementById('ten');
+    var fifteen = document.getElementById('fifteen');
+    var twenty = document.getElementById('twenty');
+    var cost = '';
+    if (specific_gender == '男') {
+      cost = male_cost_table[specific_age];
+      one.innerText = get_value(cost[0], specific_insurance);
+      three.innerText = get_value(cost[1], specific_insurance);
+      five.innerText = get_value(cost[2], specific_insurance);
+      ten.innerText = get_value(cost[3], specific_insurance);
+      fifteen.innerText = get_value(cost[4], specific_insurance);
+      twenty.innerText = get_value(cost[5], specific_insurance);
+    } else if (specific_gender == '女') {
+      cost = female_cost_table[specific_age];
+      one.innerText = get_value(cost[0], specific_insurance);
+      three.innerText = get_value(cost[1], specific_insurance);
+      five.innerText = get_value(cost[2], specific_insurance);
+      ten.innerText = get_value(cost[3], specific_insurance);
+      fifteen.innerText = get_value(cost[4], specific_insurance);
+      twenty.innerText = get_value(cost[5], specific_insurance);
+    }
+    var zdjb = document.getElementById('zdjb');
+    var qz = document.getElementById('qz');
+    var sg = document.getElementById('sg');
+    var qc = document.getElementById('qc');
+    zdjb.innerText = specific_insurance;
+    qz.innerText = (0.2 * parseFloat(specific_insurance)).toFixed(2);
+    sg.innerText = specific_insurance;
+    qc.innerText = specific_insurance;
+  }
+</script>
+</body>
+</html>
