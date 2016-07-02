@@ -23,20 +23,21 @@
     .weather {
       border: 1px solid #eee;
       box-shadow: 0 2px 0 rgba(204, 204, 204, 0.15);
-      margin-bottom: 1rem;
+      margin-bottom: 0;
+      padding: 0 0 0 0;
       border-radius: 0.25rem;
       background: white;
       position: relative;
     }
 
     .weather .header {
-      background: #fc6e51;
-      height: 6.2rem;
+      /*background: url("images/pic_hd.jpg");*/
+      /*height: 10rem;*/
       font-size: 1.25rem;
       font-weight: 600;
       color: #fff;
       line-height: 6.2rem;
-      padding: 0 1.25rem;
+      padding: 0 0 0 0;
       overflow: hidden;
       position: relative;
     }
@@ -70,6 +71,7 @@
 
     .weather .day-group {
       padding: 1.25rem 1.9rem;
+      font-size: 23px;
       border-bottom: 1px solid #f2f2f2;
       color: #2d2d2d;
     }
@@ -95,21 +97,27 @@
       color: #666666;
       float: right;
     }
+
+    .large {
+      font-size: 1.8rem;
+
+    }
   </style>
 </head>
 <body>
 <header id="header" class="header"></header>
 
 <div class="row">
-  <div class="small-12 medium-6 small-centered columns">
+  <div class="small-12 medium-6 small-centered columns" style="border-left: 0; border-right: 0;">
     <div class="weather">
       <header class="header">
-        <h2>康健无忧A款费率</h2>
+        <!--<h2>康健无忧A款费率</h2>-->
+        <img src="images/pic_hd.jpg" style="max-width:100%;"/>
       </header>
       <article>
         <ul>
           <li class="day-group">
-            <span class="day-title">个人信息:</span>
+            <span class="day-title"><i class="fi-male-female large"></i> 个人信息:</span>
           </li>
           <li class="day">
             <span>性别</span>
@@ -140,7 +148,7 @@
           </li>
 
           <li class="day-group">
-            <span class="day-title">保费计算:</span>
+            <span class="day-title"><i class="fi-laptop large"></i> 保费计算:</span>
           </li>
           <li class="day">
             <table class="hover">
@@ -152,7 +160,7 @@
               </thead>
               <tbody style="text-align: center;">
               <tr>
-                <td>一次性交清</td>
+                <td>趸交</td>
                 <td id='one'></td>
               </tr>
               <tr>
@@ -183,7 +191,7 @@
           </li>
 
           <li class="day-group">
-            <span class="day-title">保险利益:</span>
+            <span class="day-title"><i class="fi-yen large"></i> 保险利益:</span>
           </li>
           <li class="day">
             <div>
@@ -192,6 +200,8 @@
               <br/>
               轻症保险金：<span id="qz">0.2</span>（万元）<br/>
               等待期：180天，涵盖41中轻症，最多赔付5次，且豁免剩余未交保费。<br/>
+              <br/>
+              疾病终末期保险金: <span id="jbzmq">1</span>（万元）<br/>
               <br/>
               身故保险金：<span id="sg">1</span>（万元）<br/>
               若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
@@ -387,10 +397,12 @@
     var qz = document.getElementById('qz');
     var sg = document.getElementById('sg');
     var qc = document.getElementById('qc');
+    var jbzmq = document.getElementById('jbzmq');
     zdjb.innerText = specific_insurance;
     qz.innerText = (0.2 * parseFloat(specific_insurance)).toFixed(2);
     sg.innerText = specific_insurance;
     qc.innerText = specific_insurance;
+    jbzmq.innerText = specific_insurance;
   }
 </script>
 </body>
