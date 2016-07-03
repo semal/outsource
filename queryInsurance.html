@@ -23,7 +23,7 @@
     .weather {
       border: 1px solid #eee;
       box-shadow: 0 2px 0 rgba(204, 204, 204, 0.15);
-      margin-bottom: 0;
+      margin-bottom: 1rem;
       padding: 0 0 0 0;
       border-radius: 0.25rem;
       background: white;
@@ -32,11 +32,11 @@
 
     .weather .header {
       /*background: url("images/pic_hd.jpg");*/
-      /*height: 10rem;*/
+      height: 12rem;
       font-size: 1.25rem;
       font-weight: 600;
       color: #fff;
-      line-height: 6.2rem;
+      /*line-height: 8.0rem;*/
       padding: 0 0 0 0;
       overflow: hidden;
       position: relative;
@@ -118,12 +118,16 @@
 <header id="header" class="header"></header>
 
 <div class="row">
-  <div class="small-12 medium-6 small-centered columns" style="border-left: 0; border-right: 0;padding: 0 0 0 0;">
+  <div class="small-12 medium-4 small-centered columns" style="border-left: 0; border-right: 0;padding: 0 0 0 0;">
     <div class="weather">
       <header class="header">
-        <!--<h2>康健无忧A款费率</h2>-->
-        <img src="images/pic_hd.jpg" style="max-width:100%;"/>
+        <img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>
       </header>
+    </div>
+    <div class="weather">
+      <!--<header class="header">-->
+        <!--<img src="images/pic_hd.jpg" style="max-width:100%;"/>-->
+      <!--</header>-->
       <article>
         <ul>
           <li class="day-group">
@@ -134,7 +138,7 @@
 
             <div class="day-icon">
               <label for="gender"></label>
-              <select id="gender">
+              <select id="gender" onchange="get_cost();">
                 <option>男</option>
                 <option>女</option>
               </select>
@@ -145,7 +149,7 @@
 
             <div class="day-icon">
               <!--<input type="number" id="age" min="0" max="65" step="1" value="33">-->
-              <select id="age">
+              <select id="age" onchange="get_cost();">
                 <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
                 <option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option>
                 <option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option>
@@ -162,7 +166,7 @@
 
             <div class="day-icon">
               <label for="insurance"></label>
-              <input type="number" id="insurance" min="1" max="10000" step="0.1" value="1">
+              <input type="number" id="insurance" min="1" max="10000" step="0.1" value="1" onchange="get_cost();">
             </div>
           </li>
 
@@ -170,62 +174,80 @@
             <span class="day-title"><i class="fi-laptop large"></i> 保费计算:</span>
           </li>
           <li class="day">
-            <table class="hover">
-              <thead style="text-align: center;">
-              <tr>
-                <th style="text-align: center;">交费期间</th>
-                <th style="text-align: center;">基本保险金额（元）</th>
-              </tr>
-              </thead>
-              <tbody style="text-align: center;">
-              <tr>
-                <td>趸交</td>
-                <td id='one'></td>
-              </tr>
-              <tr>
-                <td>3年</td>
-                <td id='three'></td>
-              </tr>
-              <tr>
-                <td>5年</td>
-                <td id='five'></td>
-              </tr>
-              <tr>
-                <td>10年</td>
-                <td id='ten'></td>
-              </tr>
-              <tr>
-                <td>15年</td>
-                <td id='fifteen'></td>
-              </tr>
-              <tr>
-                <td>20年</td>
-                <td id='twenty'></td>
-              </tr>
-              </tbody>
-            </table>
-            <div style="text-align: center;">
-              <input type="button" class="button" onclick="get_cost()" value="计算">
+            <span>交费期间</span>
+            <div class="day-icon">
+              <label for="time"></label>
+              <select id="time" onchange="get_cost()">
+                <option>趸交</option>
+                <option>3年</option>
+                <option>5年</option>
+                <option>10年</option>
+                <option>15年</option>
+                <option>20年</option>
+              </select>
             </div>
           </li>
+          <li class="day">
+            <span>基本保险金额（万元）</span>
+            <div style="float: right;"><span id="money"></span></div>
+          </li>
+          <!--<li class="day">-->
+            <!--<table class="hover" style="visibility: hidden">-->
+              <!--<thead style="text-align: center;">-->
+              <!--<tr>-->
+                <!--<th style="text-align: center;">交费期间</th>-->
+                <!--<th style="text-align: center;">基本保险金额（元）</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody style="text-align: center;">-->
+              <!--<tr>-->
+                <!--<td>趸交</td>-->
+                <!--<td id='one'></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>3年</td>-->
+                <!--<td id='three'></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>5年</td>-->
+                <!--<td id='five'></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>10年</td>-->
+                <!--<td id='ten'></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>15年</td>-->
+                <!--<td id='fifteen'></td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>20年</td>-->
+                <!--<td id='twenty'></td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+            <!--<div style="text-align: center;">-->
+              <!--<input type="button" class="button" onclick="get_cost()" value="计算">-->
+            <!--</div>-->
+          <!--</li>-->
 
           <li class="day-group">
             <span class="day-title"><i class="fi-yen large"></i> 保险利益:</span>
           </li>
           <li class="day">
             <div>
-              重大疾病保险金：<span id="zdjb">1</span>（万元）<br/>
+              1. 重大疾病保险金：<span id="zdjb">1</span>（万元）<br/>
               等待期：180天，涵盖81种重大疾病。<br/>
               <br/>
-              轻症保险金：<span id="qz">0.2</span>（万元）<br/>
+              2. 轻症保险金：<span id="qz">0.2</span>（万元）<br/>
               等待期：180天，涵盖41中轻症，最多赔付5次，且豁免剩余未交保费。<br/>
               <br/>
-              疾病终末期保险金: <span id="jbzmq">1</span>（万元）<br/>
+              3. 疾病终末期保险金: <span id="jbzmq">1</span>（万元）<br/>
               <br/>
-              身故保险金：<span id="sg">1</span>（万元）<br/>
+              4. 身故保险金：<span id="sg">1</span>（万元）<br/>
               若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
               <br/>
-              全残保险金：<span id="qc">1</span>（万元）<br/>
+              5. 全残保险金：<span id="qc">1</span>（万元）<br/>
               若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
               <br/>
               本宣传材料仅供参考，具体以合同为准。<br/>
@@ -238,6 +260,7 @@
   </div>
 </div>
 <script type='text/javascript'>
+  document.onload(get_cost());
   function get_value(cost, insurance) {
     if (cost != '') {
       var ins = parseInt(cost) * parseFloat(insurance);
@@ -388,40 +411,55 @@
     var specific_gender = gender.value;
     var specific_age = document.getElementById('age').value;
     var specific_insurance = document.getElementById('insurance').value;
-    var one = document.getElementById('one');
-    var three = document.getElementById('three');
-    var five = document.getElementById('five');
-    var ten = document.getElementById('ten');
-    var fifteen = document.getElementById('fifteen');
-    var twenty = document.getElementById('twenty');
+    var specific_time = document.getElementById('time').value;
+//    var one = document.getElementById('one');
+//    var three = document.getElementById('three');
+//    var five = document.getElementById('five');
+//    var ten = document.getElementById('ten');
+//    var fifteen = document.getElementById('fifteen');
+//    var twenty = document.getElementById('twenty');
     var cost = '';
     if (specific_gender == '男') {
       cost = male_cost_table[specific_age];
-      one.innerText = get_value(cost[0], specific_insurance);
-      three.innerText = get_value(cost[1], specific_insurance);
-      five.innerText = get_value(cost[2], specific_insurance);
-      ten.innerText = get_value(cost[3], specific_insurance);
-      fifteen.innerText = get_value(cost[4], specific_insurance);
-      twenty.innerText = get_value(cost[5], specific_insurance);
+//      one.innerText = get_value(cost[0], specific_insurance);
+//      three.innerText = get_value(cost[1], specific_insurance);
+//      five.innerText = get_value(cost[2], specific_insurance);
+//      ten.innerText = get_value(cost[3], specific_insurance);
+//      fifteen.innerText = get_value(cost[4], specific_insurance);
+//      twenty.innerText = get_value(cost[5], specific_insurance);
     } else if (specific_gender == '女') {
       cost = female_cost_table[specific_age];
-      one.innerText = get_value(cost[0], specific_insurance);
-      three.innerText = get_value(cost[1], specific_insurance);
-      five.innerText = get_value(cost[2], specific_insurance);
-      ten.innerText = get_value(cost[3], specific_insurance);
-      fifteen.innerText = get_value(cost[4], specific_insurance);
-      twenty.innerText = get_value(cost[5], specific_insurance);
+//      one.innerText = get_value(cost[0], specific_insurance);
+//      three.innerText = get_value(cost[1], specific_insurance);
+//      five.innerText = get_value(cost[2], specific_insurance);
+//      ten.innerText = get_value(cost[3], specific_insurance);
+//      fifteen.innerText = get_value(cost[4], specific_insurance);
+//      twenty.innerText = get_value(cost[5], specific_insurance);
     }
     var zdjb = document.getElementById('zdjb');
     var qz = document.getElementById('qz');
     var sg = document.getElementById('sg');
     var qc = document.getElementById('qc');
     var jbzmq = document.getElementById('jbzmq');
+    var money = document.getElementById('money');
     zdjb.innerText = specific_insurance;
     qz.innerText = (0.2 * parseFloat(specific_insurance)).toFixed(2);
     sg.innerText = specific_insurance;
     qc.innerText = specific_insurance;
     jbzmq.innerText = specific_insurance;
+    if (specific_time == '趸交') {
+      money.innerText = get_value(cost[0], specific_insurance);
+    } else if (specific_time == '3年') {
+      money.innerText = get_value(cost[1], specific_insurance);
+    } else if (specific_time == '5年') {
+      money.innerText = get_value(cost[2], specific_insurance);
+    } else if (specific_time == '10年') {
+      money.innerText = get_value(cost[3], specific_insurance);
+    } else if (specific_time == '15年') {
+      money.innerText = get_value(cost[4], specific_insurance);
+    } else if (specific_age == '20年') {
+      money.innerText = get_value(cost[5], specific_insurance);
+    }
   }
 </script>
 </body>
