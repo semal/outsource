@@ -18,7 +18,7 @@
   <style type="text/css">
     body {
       font-family: 'Source Sans Pro', sans-serif;
-      background: #dddddd;
+      background: #e9eaa7;
     }
 
     footer {
@@ -75,12 +75,14 @@
       font-size: 1.2rem;
       border-bottom: 1px solid #f2f2f2;
       color: #2d2d2d;
+      height: 3rem;
     }
 
     .weather .day {
       padding: 0.6rem 1.9rem;
       border-bottom: 1px solid #f2f2f2;
       color: #888888;
+      /*height: 3rem;*/
     }
 
     select {
@@ -120,9 +122,9 @@
 <div class="row">
   <div class="small-12 medium-4 small-centered columns" style="border-left: 0; border-right: 0;padding: 0 0 0 0;">
     <!--<div class="weather">-->
-      <!--<header class="header">-->
-        <!--<img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>-->
-      <!--</header>-->
+    <!--<header class="header">-->
+    <!--<img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>-->
+    <!--</header>-->
     <!--</div>-->
     <div class="weather">
       <header class="header">
@@ -138,7 +140,7 @@
 
             <div class="day-icon">
               <label for="gender"></label>
-              <select id="gender" onchange="get_cost();">
+              <select id="gender" onchange=";">
                 <option>男</option>
                 <option>女</option>
               </select>
@@ -149,7 +151,7 @@
 
             <div class="day-icon">
               <!--<input type="number" id="age" min="0" max="65" step="1" value="33">-->
-              <select id="age" onchange="get_cost();">
+              <select id="age" onchange=";">
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -225,7 +227,7 @@
 
             <div class="day-icon">
               <label for="insurance"></label>
-              <input type="number" id="insurance" min="1" max="10000" step="0.1" value="1" onchange="get_cost();">
+              <input type="number" id="insurance" min="1" max="10000" step="0.1" value="1" onchange=";">
             </div>
           </li>
         </ul>
@@ -242,7 +244,7 @@
 
             <div class="day-icon">
               <label for="time"></label>
-              <select id="time" onchange="get_cost()">
+              <select id="time" onchange="">
                 <option>趸交</option>
                 <option>3年</option>
                 <option>5年</option>
@@ -257,10 +259,16 @@
 
             <div style="float: right;"><span id="money"></span></div>
           </li>
+          <li class="day">
+            <span></span>
+            <div style="height: 3rem; text-align: center;">
+              <button class="button" onclick="get_cost();">开始计算</button>
+            </div>
+          </li>
         </ul>
       </article>
     </div>
-    <div class="weather">
+    <div class="weather" id="benefit" style="display: none;">
       <article>
         <ul>
 
@@ -309,18 +317,28 @@
           </li>
           <li class="day">
             <div>
-              ① 重大疾病保险金：<span id="zdjb">1</span>（万元）<br/>
+              <strong>
+                ① 重大疾病保险金：<span id="zdjb">1</span>（万元）<br/>
+              </strong>
               等待期：180天，涵盖81种重大疾病。<br/>
               <br/>
-              ② 轻症保险金：<span id="qz">0.2</span>（万元）<br/>
+              <strong>
+                ② 轻症保险金：<span id="qz">0.2</span>（万元）<br/>
+              </strong>
               等待期：180天，涵盖41中轻症，最多赔付5次，且豁免剩余未交保费。<br/>
               <br/>
-              ③ 疾病终末期保险金: <span id="jbzmq">1</span>（万元）<br/>
+              <strong>
+                ③ 疾病终末期保险金: <span id="jbzmq">1</span>（万元）<br/>
+              </strong>
               <br/>
-              ④ 身故保险金：<span id="sg">1</span>（万元）<br/>
+              <strong>
+                ④ 身故保险金：<span id="sg">1</span>（万元）<br/>
+              </strong>
               若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
               <br/>
-              ⑤ 全残保险金：<span id="qc">1</span>（万元）<br/>
+              <strong>
+                ⑤ 全残保险金：<span id="qc">1</span>（万元）<br/>
+              </strong>
               若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
               <br/>
               本宣传材料仅供参考，具体以合同为准。<br/>
@@ -335,7 +353,6 @@
   </div>
 </div>
 <script type='text/javascript'>
-  document.onload(get_cost());
   function get_value(cost, insurance) {
     if (cost != '') {
       var ins = parseInt(cost) * parseFloat(insurance);
@@ -535,6 +552,8 @@
     } else if (specific_age == '20年') {
       money.innerText = get_value(cost[5], specific_insurance);
     }
+    var benefit = document.getElementById('benefit');
+    benefit.style.display = 'block';
   }
 </script>
 </body>
