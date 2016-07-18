@@ -117,245 +117,247 @@
   </style>
 </head>
 <body>
-<header id="header" class="header"></header>
+<header id="header" class="header">
+  <div>对不起,您访问的页面已经删除.</div>
+</header>
 
-<div class="row">
-  <div class="small-12 medium-4 small-centered columns" style="border-left: 0; border-right: 0;padding: 0 0 0 0;">
+<!--<div class="row">-->
+  <!--<div class="small-12 medium-4 small-centered columns" style="border-left: 0; border-right: 0;padding: 0 0 0 0;">-->
+    <!--&lt;!&ndash;<div class="weather">&ndash;&gt;-->
+    <!--&lt;!&ndash;<header class="header">&ndash;&gt;-->
+    <!--&lt;!&ndash;<img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</header>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
     <!--<div class="weather">-->
-    <!--<header class="header">-->
-    <!--<img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>-->
-    <!--</header>-->
-    <!--</div>-->
-    <div class="weather">
-      <header class="header">
-        <img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>
-      </header>
-      <article>
-        <ul>
-          <li class="day-group">
-            <span class="day-title"><i class="fi-male-female large"></i> 被保险人信息</span>
-          </li>
-          <li class="day">
-            <span>性别</span>
-
-            <div class="day-icon">
-              <label for="gender"></label>
-              <select id="gender" onchange="empty();">
-                <option>男</option>
-                <option>女</option>
-              </select>
-            </div>
-          </li>
-          <li class="day">
-            <span>年龄（周岁）</span>
-
-            <div class="day-icon">
-              <!--<input type="number" id="age" min="0" max="65" step="1" value="33">-->
-              <select id="age" onchange="empty();">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
-                <option>32</option>
-                <option>33</option>
-                <option>34</option>
-                <option>35</option>
-                <option>36</option>
-                <option>37</option>
-                <option>38</option>
-                <option>39</option>
-                <option>40</option>
-                <option>41</option>
-                <option>42</option>
-                <option>43</option>
-                <option>44</option>
-                <option>45</option>
-                <option>46</option>
-                <option>47</option>
-                <option>48</option>
-                <option>49</option>
-                <option>50</option>
-                <option>51</option>
-                <option>52</option>
-                <option>53</option>
-                <option>54</option>
-                <option>55</option>
-                <option>56</option>
-                <option>57</option>
-                <option>58</option>
-                <option>59</option>
-                <option>60</option>
-                <option>61</option>
-                <option>62</option>
-                <option>63</option>
-                <option>64</option>
-                <option>65</option>
-              </select>
-              <label for="age"></label>
-            </div>
-          </li>
-          <li class="day">
-            <span>保额（万元）</span>
-
-            <div class="day-icon">
-              <label for="insurance"></label>
-              <input type="number" id="insurance" min="1" max="10000" step="0.1" value="" onchange="empty();">
-            </div>
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="weather">
-      <article>
-        <ul>
-          <li class="day-group">
-            <span class="day-title"><i class="fi-clipboard-pencil large"></i> 投保选择</span>
-          </li>
-          <li class="day">
-            <span>交费期间</span>
-
-            <div class="day-icon">
-              <label for="time"></label>
-              <select id="time" onchange="empty()">
-                <option>20年</option>
-                <option>15年</option>
-                <option>10年</option>
-                <option>5年</option>
-                <option>3年</option>
-                <option>趸交</option>
-              </select>
-            </div>
-          </li>
-          <li class="day">
-            <span>年交保费（元）</span>
-
-            <div style="float: right;"><span id="money"></span></div>
-          </li>
-          <li class="day">
-            <span></span>
-
-            <div style="height: 3rem; text-align: center;">
-              <button class="button" onclick="get_cost();">开始计算</button>
-            </div>
-          </li>
-        </ul>
-      </article>
-    </div>
-    <div class="weather" id="benefit" style="display: none;">
-      <article>
-        <ul>
-
-          <!--<li class="day">-->
-          <!--<table class="hover" style="visibility: hidden">-->
-          <!--<thead style="text-align: center;">-->
-          <!--<tr>-->
-          <!--<th style="text-align: center;">交费期间</th>-->
-          <!--<th style="text-align: center;">基本保险金额（元）</th>-->
-          <!--</tr>-->
-          <!--</thead>-->
-          <!--<tbody style="text-align: center;">-->
-          <!--<tr>-->
-          <!--<td>趸交</td>-->
-          <!--<td id='one'></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<td>3年</td>-->
-          <!--<td id='three'></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<td>5年</td>-->
-          <!--<td id='five'></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<td>10年</td>-->
-          <!--<td id='ten'></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<td>15年</td>-->
-          <!--<td id='fifteen'></td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--<td>20年</td>-->
-          <!--<td id='twenty'></td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
-          <!--</table>-->
-          <!--<div style="text-align: center;">-->
-          <!--<input type="button" class="button" onclick="get_cost()" value="计算">-->
-          <!--</div>-->
+      <!--<header class="header">-->
+        <!--<img src="images/pic_hd.jpg" style="width:100%;height: 100%;"/>-->
+      <!--</header>-->
+      <!--<article>-->
+        <!--<ul>-->
+          <!--<li class="day-group">-->
+            <!--<span class="day-title"><i class="fi-male-female large"></i> 被保险人信息</span>-->
           <!--</li>-->
+          <!--<li class="day">-->
+            <!--<span>性别</span>-->
 
-          <li class="day-group">
-            <span class="day-title"><i class="fi-heart large"></i> 保障责任</span>
-          </li>
-          <li class="day">
-            <div>
-              <strong>
-                ① 重大疾病保险金：<span id="zdjb">1</span> 元<br/>
-              </strong>
-              等待期：180天，涵盖81种重大疾病。<br/>
-              <br/>
-              <strong>
-                ② 轻症保险金：<span id="qz">0.2</span> 元<br/>
-              </strong>
-              等待期：180天，涵盖41种轻症，最多赔付5次，且豁免剩余未交保费。<br/>
-              <br/>
-              <strong>
-                ③ 疾病终末期保险金: <span id="jbzmq">1</span> 元<br/>
-              </strong>
-              <br/>
-              <strong>
-                ④ 身故保险金：<span id="sg">1</span> 元<br/>
-              </strong>
-              若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
-              <br/>
-              <strong>
-                ⑤ 全残保险金：<span id="qc">1</span> 元<br/>
-              </strong>
-              若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>
-              <br/>
-              本宣传材料仅供参考，具体以合同为准。<br/>
-            </div>
-          </li>
-        </ul>
-      </article>
-    </div>
-    <!--<div class="weather">-->
-    <img src="images/footer.jpg" style="width:100%;height: 100%;"/>
-    <footer class="footer" id="footer">
-      Copyright © 2016 semal. All Rights Reserved.
-    </footer>
+            <!--<div class="day-icon">-->
+              <!--<label for="gender"></label>-->
+              <!--<select id="gender" onchange="empty();">-->
+                <!--<option>男</option>-->
+                <!--<option>女</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li class="day">-->
+            <!--<span>年龄（周岁）</span>-->
+
+            <!--<div class="day-icon">-->
+              <!--&lt;!&ndash;<input type="number" id="age" min="0" max="65" step="1" value="33">&ndash;&gt;-->
+              <!--<select id="age" onchange="empty();">-->
+                <!--<option>0</option>-->
+                <!--<option>1</option>-->
+                <!--<option>2</option>-->
+                <!--<option>3</option>-->
+                <!--<option>4</option>-->
+                <!--<option>5</option>-->
+                <!--<option>6</option>-->
+                <!--<option>7</option>-->
+                <!--<option>8</option>-->
+                <!--<option>9</option>-->
+                <!--<option>10</option>-->
+                <!--<option>11</option>-->
+                <!--<option>12</option>-->
+                <!--<option>13</option>-->
+                <!--<option>14</option>-->
+                <!--<option>15</option>-->
+                <!--<option>16</option>-->
+                <!--<option>17</option>-->
+                <!--<option>18</option>-->
+                <!--<option>19</option>-->
+                <!--<option>20</option>-->
+                <!--<option>21</option>-->
+                <!--<option>22</option>-->
+                <!--<option>23</option>-->
+                <!--<option>24</option>-->
+                <!--<option>25</option>-->
+                <!--<option>26</option>-->
+                <!--<option>27</option>-->
+                <!--<option>28</option>-->
+                <!--<option>29</option>-->
+                <!--<option>30</option>-->
+                <!--<option>31</option>-->
+                <!--<option>32</option>-->
+                <!--<option>33</option>-->
+                <!--<option>34</option>-->
+                <!--<option>35</option>-->
+                <!--<option>36</option>-->
+                <!--<option>37</option>-->
+                <!--<option>38</option>-->
+                <!--<option>39</option>-->
+                <!--<option>40</option>-->
+                <!--<option>41</option>-->
+                <!--<option>42</option>-->
+                <!--<option>43</option>-->
+                <!--<option>44</option>-->
+                <!--<option>45</option>-->
+                <!--<option>46</option>-->
+                <!--<option>47</option>-->
+                <!--<option>48</option>-->
+                <!--<option>49</option>-->
+                <!--<option>50</option>-->
+                <!--<option>51</option>-->
+                <!--<option>52</option>-->
+                <!--<option>53</option>-->
+                <!--<option>54</option>-->
+                <!--<option>55</option>-->
+                <!--<option>56</option>-->
+                <!--<option>57</option>-->
+                <!--<option>58</option>-->
+                <!--<option>59</option>-->
+                <!--<option>60</option>-->
+                <!--<option>61</option>-->
+                <!--<option>62</option>-->
+                <!--<option>63</option>-->
+                <!--<option>64</option>-->
+                <!--<option>65</option>-->
+              <!--</select>-->
+              <!--<label for="age"></label>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li class="day">-->
+            <!--<span>保额（万元）</span>-->
+
+            <!--<div class="day-icon">-->
+              <!--<label for="insurance"></label>-->
+              <!--<input type="number" id="insurance" min="1" max="10000" step="0.1" value="" onchange="empty();">-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</article>-->
     <!--</div>-->
-  </div>
-</div>
+    <!--<div class="weather">-->
+      <!--<article>-->
+        <!--<ul>-->
+          <!--<li class="day-group">-->
+            <!--<span class="day-title"><i class="fi-clipboard-pencil large"></i> 投保选择</span>-->
+          <!--</li>-->
+          <!--<li class="day">-->
+            <!--<span>交费期间</span>-->
+
+            <!--<div class="day-icon">-->
+              <!--<label for="time"></label>-->
+              <!--<select id="time" onchange="empty()">-->
+                <!--<option>20年</option>-->
+                <!--<option>15年</option>-->
+                <!--<option>10年</option>-->
+                <!--<option>5年</option>-->
+                <!--<option>3年</option>-->
+                <!--<option>趸交</option>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</li>-->
+          <!--<li class="day">-->
+            <!--<span>年交保费（元）</span>-->
+
+            <!--<div style="float: right;"><span id="money"></span></div>-->
+          <!--</li>-->
+          <!--<li class="day">-->
+            <!--<span></span>-->
+
+            <!--<div style="height: 3rem; text-align: center;">-->
+              <!--<button class="button" onclick="get_cost();">开始计算</button>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</article>-->
+    <!--</div>-->
+    <!--<div class="weather" id="benefit" style="display: none;">-->
+      <!--<article>-->
+        <!--<ul>-->
+
+          <!--&lt;!&ndash;<li class="day">&ndash;&gt;-->
+          <!--&lt;!&ndash;<table class="hover" style="visibility: hidden">&ndash;&gt;-->
+          <!--&lt;!&ndash;<thead style="text-align: center;">&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<th style="text-align: center;">交费期间</th>&ndash;&gt;-->
+          <!--&lt;!&ndash;<th style="text-align: center;">基本保险金额（元）</th>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+          <!--&lt;!&ndash;<tbody style="text-align: center;">&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>趸交</td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td id='one'></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>3年</td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td id='three'></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>5年</td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td id='five'></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>10年</td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td id='ten'></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>15年</td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td id='fifteen'></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>20年</td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td id='twenty'></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+          <!--&lt;!&ndash;</table>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div style="text-align: center;">&ndash;&gt;-->
+          <!--&lt;!&ndash;<input type="button" class="button" onclick="get_cost()" value="计算">&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+          <!--<li class="day-group">-->
+            <!--<span class="day-title"><i class="fi-heart large"></i> 保障责任</span>-->
+          <!--</li>-->
+          <!--<li class="day">-->
+            <!--<div>-->
+              <!--<strong>-->
+                <!--① 重大疾病保险金：<span id="zdjb">1</span> 元<br/>-->
+              <!--</strong>-->
+              <!--等待期：180天，涵盖81种重大疾病。<br/>-->
+              <!--<br/>-->
+              <!--<strong>-->
+                <!--② 轻症保险金：<span id="qz">0.2</span> 元<br/>-->
+              <!--</strong>-->
+              <!--等待期：180天，涵盖41种轻症，最多赔付5次，且豁免剩余未交保费。<br/>-->
+              <!--<br/>-->
+              <!--<strong>-->
+                <!--③ 疾病终末期保险金: <span id="jbzmq">1</span> 元<br/>-->
+              <!--</strong>-->
+              <!--<br/>-->
+              <!--<strong>-->
+                <!--④ 身故保险金：<span id="sg">1</span> 元<br/>-->
+              <!--</strong>-->
+              <!--若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>-->
+              <!--<br/>-->
+              <!--<strong>-->
+                <!--⑤ 全残保险金：<span id="qc">1</span> 元<br/>-->
+              <!--</strong>-->
+              <!--若被保人未满18周岁，则赔付所交保费的1.5倍。<br/>-->
+              <!--<br/>-->
+              <!--本宣传材料仅供参考，具体以合同为准。<br/>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</article>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="weather">&ndash;&gt;-->
+    <!--<img src="images/footer.jpg" style="width:100%;height: 100%;"/>-->
+    <!--<footer class="footer" id="footer">-->
+      <!--Copyright © 2016 semal. All Rights Reserved.-->
+    <!--</footer>-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
+<!--</div>-->
 <script type='text/javascript'>
   function empty() {
     var money = document.getElementById('money');
