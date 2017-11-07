@@ -1,3 +1,3 @@
 # outsource
 
-1. A page for calculating insurance cost. **QueryInsurance.html**
+1. A page for calculating insurance cost. **queryInsurance.html**
